@@ -3,7 +3,7 @@
 \name{measr}
 \alias{\%pm\%}
 \alias{measr}
-\title{Create a \code{measr} object}
+\title{Create a \code{measr} Object}
 \usage{
 measr(val, err)
 
@@ -16,7 +16,10 @@ val \%pm\% err
 the measurement error}
 }
 \value{
-A \code{measr} object with the given value and error.
+A \code{measr} object with the given value and error. If one of the
+parameters given cannot be coerced to a numeric object via
+\code{\link{as.numeric}}, then \code{NA}s can be introduced in the return
+value.
 }
 \description{
 Creates a \code{measr} object with the given value and standard deviation.

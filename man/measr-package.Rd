@@ -5,7 +5,7 @@
 \alias{measr-package}
 \title{measr - Error propagation for measured values}
 \description{
-The \code{measR} package provides objects and functions for one to easily
+The \code{measr} package provides objects and functions for one to easily
 work with measurements errors and propagation of those errors, common to
 research in the physical sciences. It introduces a special type of a numeric
 object, \code{measr}, which stores both the value and its uncertainty.

@@ -2,13 +2,18 @@
 % Please edit documentation in R/measr.R
 \name{is.measr}
 \alias{is.measr}
-\title{Coerc
-Checks whether all the objects are of 'measr' type. Returns a logical vector.}
+\title{Is an Object a Measured Value?}
 \usage{
 is.measr(x)
 }
+\arguments{
+\item{x}{The object to be tested}
+}
+\value{
+\code{TRUE} if the object is a \code{measr} object. Otherwise, 
+    returns \code{FALSE}.
+}
 \description{
-Coerc
-Checks whether all the objects are of 'measr' type. Returns a logical vector.
+Checks whether the object is of \code{measr} type.
 }
 

@@ -6,7 +6,14 @@
 \usage{
 as.measr(x)
 }
+\arguments{
+\item{x}{The object to be coerced}
+}
+\value{
+A \code{measr} object, or \code{NA} if it cannot be coerced.
+}
 \description{
-Coerce an R object into a
+\code{as.measr} will attempt to convert the specified object to a  
+\code{measr} object.
 }
 

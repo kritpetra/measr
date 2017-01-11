@@ -18,7 +18,7 @@ measr <- function(val, err) {
     err <- as.numeric(err)
   }
 
-  structure(list(val = val, err = err), class = "measr")
+  structure(list(val = val, err = abs(err)), class = "measr")
 }
 
 #  Alias for measr()
@@ -38,26 +38,37 @@ length.measr <- function(x) {
   length(x$val)
 }
 
-# Combines the measr objects into a list.
-c.measr <- function(...) {
-  structure(list(val = unlist(lapply(list(...), `[[`, "val")),
-                 err = unlist(lapply(list(...), `[[`, "err"))),
-            class = "measr")
-}
-
 #' Is an Object a Measured Value?
-#' Checks whether all the objects are of 'measr' type. Returns a logical vector.
+#' 
+#' Checks whether the object is of \code{measr} type.
+#' 
+#' @param x The object to be tested
+#' @return \code{TRUE} if the object is a \code{measr} object. Otherwise, 
+#'     returns \code{FALSE}.
 is.measr <- function(x) {
   inherits(x, "measr")
 }
 
+# Combines the measr objects into a list.
+# Note: for this method to be dispatched, the first argument must be a measr
+# object.
+c.measr <- function(...) {
+  x <- lapply(list(...), as.measr)
+  structure(list(val = unlist(lapply(x, `[[`, "val")),
+                 err = unlist(lapply(x, `[[`, "err"))),
+            class = "measr")
+}
+
 #' Coerce to Measurement
 #'
-#' Coerce an R object into a
+#' \code{as.measr} will attempt to convert the specified object to a  
+#' \code{measr} object.
+#' 
+#' @param x The object to be coerced
+#' @return A \code{measr} object, or \code{NA} if it cannot be coerced.
+#' 
 as.measr <- function(x) {
-  stopifnot(is.numeric(x) || is.measr(x))
-
-  if (!is.measr(x) && is.numeric(x)) {
-    measr(x, err = 0)
+  if (!is.measr(x)) {
+    measr(as.numeric(x), err = 0)
   } else x
 }
