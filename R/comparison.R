@@ -34,3 +34,20 @@
 `!=.measr` = function(e1, e2) {
   !(e1 == e2)
 }
+
+
+`<.measr` = function(e1, e2) {
+  return(e1$val + e1$err < e2$val - e2$err)  
+}
+
+`<=.measr` = function(e1, e2) {
+  return(e1 < e2 || e1 == e2)  
+}
+
+`>.measr` = function(e1, e2) {
+  return(e1$val - e1$err > e2$val + e2$err)
+}
+
+`>=.measr` = function(e1, e2) {
+  return(e1 > e2 || e1 == e2)  
+}
